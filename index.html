@@ -1,16 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Brain Tracking</title>
-    <style>
-      body {
-        margin: 0;
-        overflow: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <script type="module" src="/src/main.js"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>BMW Head Tracker</title>
+
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: black;
+  font-family: sans-serif;
+}
+
+video {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 180px;
+  border-radius: 15px;
+  z-index: 10;
+}
+
+/* Control Panel */
+#controlPanel {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  width: 260px;
+  background: rgba(0,0,0,0.85);
+  padding: 20px;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 20;
+}
+
+#controlPanel input {
+  width: 100%;
+}
+
+#controlPanel label {
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<video id="webcam" autoplay playsinline></video>
+
+<div id="controlPanel">
+  <label>Position X: <span id="posXVal">0</span></label>
+  <input type="range" id="posX" min="-3" max="3" step="0.01" value="0">
+
+  <label>Position Y: <span id="posYVal">0</span></label>
+  <input type="range" id="posY" min="-3" max="3" step="0.01" value="0">
+
+  <label>Position Z: <span id="posZVal">0</span></label>
+  <input type="range" id="posZ" min="-3" max="3" step="0.01" value="0">
+
+  <label>Scale: <span id="scaleVal">1</span></label>
+  <input type="range" id="scale" min="0.1" max="3" step="0.01" value="1">
+
+  <label>Rotation Y: <span id="rotYVal">0°</span></label>
+  <input type="range" id="rotY" min="-180" max="180" step="1" value="0">
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
 </html>
